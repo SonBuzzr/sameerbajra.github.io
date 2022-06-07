@@ -64,17 +64,17 @@
 		 * @param {object} event.data - Event data.
 		 * @param {object} event.data.plugin - Reference to plugin.
 		 */
+
 		Plugin.prototype.onFocus = function (event) {
 			
-			var plugin;
-			
+			var plugin;			
 			plugin = event.data.plugin;
 			plugin.notify.text(plugin.options.instructions);			
 	
 		};
 		
 		/** 
-		 * Handles kedown event on text field.
+		 * Handles keydown event on text field.
 		 * 
 		 * @param {object} event - Keyboard event.
 		 * @param {object} event.data - Event data.
@@ -141,7 +141,9 @@
 							break;
 					   
 						default: // get suggestions based on user input
+						
 							plugin.list.empty();
+							
 							suggestions = plugin.getSuggestions(plugin.options.source, $me.val());
 							if (suggestions.length > 1) {
 								for(var i = 0, l = suggestions.length; i < l; i++) {
@@ -220,6 +222,9 @@
 						r.push(arr[i].replace(regex, '<span>$1</span>'));
 					}
 				}
+			}
+			if (r.length > 1) { // add instructions to hidden live area
+				this.notify.text('Suggestions are available for this field. Use up and down arrows to select a suggestion and enter key to use it.');
 			}
 	
 			return r;
