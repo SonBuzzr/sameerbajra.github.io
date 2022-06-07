@@ -44,12 +44,12 @@
 			
 			$me = $(el);
 			$btn = $('<div/>').attr({
-          'id': id + '_btn_' + i,
-		  'role': 'button',
-          'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
-          'aria-expanded': false, // toggle expanded state
-          'tabindex': 0 //add keyboard focus
-        })
+          		'id': id + '_btn_' + i,
+				'role': 'button',
+				'aria-controls': id + '_panel_' + i, // associate button with corresponding panel
+				'aria-expanded': false, // toggle expanded state
+				'tabindex': 0 //add keyboard focus
+				})
         .addClass('button')
 			.html($me.html())
 			.on('keydown', {'plugin': plugin}, plugin.onKeyDown) // enable keyboard navigation
@@ -95,7 +95,8 @@
 		}
 		$panel.slideToggle({ duration: plugin.options.animationSpeed, done: function(){
 			$panel.attr({'aria-hidden':isVisible});
-		} });
+			} 
+		});
 		
 		if(plugin.options.autoCollapse) { // collapse all other panels
 			
